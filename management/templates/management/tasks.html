@@ -2,11 +2,11 @@
 {% block content %}
 <div class="container">
     <br><br>
-    <button type="button" id="taskbutton" class="btn btn-primary" data-toggle="modal" data-target="#taskModal" >ADD TASKS</button>
+    <button type="button" id="taskbutton" class="btn btn-primary" data-toggle="modal" data-target="#taskModal" ><i class="fas fa-plus"></i> ADD TASKS</button>
     <div class="modal" id="taskModal" tabindex="-1" role="dialog" aria-labelledby="taskModalTitle" aria-hidden="true">
     </div>
     &nbsp;&nbsp;
-    <a href="{% url 'management:deletecompleted' %}" class="btn btn-secondary" onclick="return confirm('Are you sure you want to Delete?');">DELETE COMPLETED TASKS</a>
+    <a href="{% url 'management:deletecompleted' %}" class="btn btn-secondary" onclick="return confirm('Are you sure you want to Delete?');"><i class="fas fa-trash-alt"></i> DELETE COMPLETED TASKS</a>
     <br><br>
 <div class="jumbotron">
         <div class="row">

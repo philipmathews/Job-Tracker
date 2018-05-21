@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand ml-5" href="{% url 'management:dashboard' %}">JOB TRACKER</a>
+    <a class="navbar-brand ml-5" href="{% url 'management:dashboard' %}"><i class="fas fa-home"></i> JOB TRACKER</a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -7,22 +7,20 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ml-auto">
           <li class="nav-item active">
-              <a class="nav-link" href="{% url 'management:jobactivity' %}">Job Activity <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="{% url 'management:jobactivity' %}"><i class="far fa-chart-bar"></i> Job Activity <span class="sr-only">(current)</span></a>
             </li>
             &nbsp;&nbsp;&nbsp;
         <li class="nav-item active">
-          <a class="nav-link" href="{% url 'management:tasks' %}">Tasks <span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="{% url 'management:tasks' %}"><i class="fas fa-clipboard-check"></i> Tasks <span class="sr-only">(current)</span></a>
         </li>
         </ul>
         &nbsp;&nbsp;&nbsp;&nbsp;
         <ul class="navbar-nav mr-5">
         <li class="nav-item dropdown active">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              {{ user.username }}
-          </a>
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user-circle"></i> {{ user.username }}</a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="{% url 'management:change_password' %}">Change Password</a>
-            <a class="dropdown-item" href="{% url 'management:logout' %}">Logout</a>
+            <a class="dropdown-item" href="{% url 'management:change_password' %}"><i class="fas fa-exchange-alt"></i> Change Password</a>
+            <a class="dropdown-item" href="{% url 'management:logout' %}"><i class="fas fa-sign-out-alt"></i> Logout</a>
         </li>
       </ul>
     </div>

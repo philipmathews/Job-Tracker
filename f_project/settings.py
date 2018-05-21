@@ -34,7 +34,7 @@ EMAIL_HOST_USER = 'philipappu007@gmail.com'
 EMAIL_HOST_PASSWORD = 'finalproj123'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-DEFAULT_FROM_EMAIL = 'Job Management Team <noreply@example.com>'
+DEFAULT_FROM_EMAIL = 'Job Tracker Team <noreply@example.com>'
 
 
 
