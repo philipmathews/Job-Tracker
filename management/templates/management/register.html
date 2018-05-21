@@ -1,0 +1,26 @@
+{% extends 'management/layout.html' %}
+{% load bootstrap4 %}
+{% block content %}
+<div class="container">
+<div class="jumbotron">
+<div class="container">
+  <h2>Sign up</h2>
+  <br>
+  <form method="POST">
+    <div class="form-group">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+
+    <br>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+    <div class="g-recaptcha" data-sitekey="6Lfce1kUAAAAAC29O4mm-yE9tKqj11MnUsWfTWdT"></div>
+    <br>
+
+    {% buttons %}
+    <button type="submit" class="btn btn-primary">Sign up</button>
+    {% endbuttons %}
+    </div>
+  </form>
+</div></div>
+</div>
+{% endblock %}

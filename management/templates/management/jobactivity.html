@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
+<script>
+var endpoint = "{% url 'management:chartdata' %}" 
+var defaultData= []
+var labels = []
+$(document).ready(function(){
+    $.ajax({ 
+        method: "GET",
+        url: endpoint,
+        success: function(data){
+            labels = data.labels
+            defaultData = data.default
+            setchart()
+        // console.log(data.customers * 234)
+        },  
+        error: function(error_data){
+            console.log(error);
+            console.log(error_data);
+        }
+    });
+function setchart(){
+    var ctx = document.getElementById("myChart").getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: '# of Jobs',
+                data: defaultData,
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255,99,132,1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero:true
+                    }
+                }]
+            }
+        }
+    });
+}
+});             
+</script>
+<script>
+        var endpoint = "{% url 'management:chartdata' %}" 
+        var defaultdata2= []
+        var labels2 = []
+        $(document).ready(function(){
+            $.ajax({ 
+                method: "GET",
+                url: endpoint,
+                success: function(data){
+                    labels2 = data.labels2
+                    defaultData2 = data.default2
+                    setnewchart()
+                // console.log(data.customers * 234)
+                },  
+                error: function(error_data){
+                    console.log(error);
+                    console.log(error_data);
+                }
+            });
+        function setnewchart(){
+            var ctx = document.getElementById("myChart2").getContext('2d');
+            var myChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels2,
+                    datasets: [{
+                        label: '# of Jobs',
+                        data: defaultData2,
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(153, 102, 255, 0.2)',
+                            'rgba(255, 159, 64, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(255,99,132,1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 159, 64, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero:true
+                            }
+                        }]
+                    }
+                }
+            });
+        }
+        });             
+</script>
+</head>
+<body>
+{% include 'management/includes/dashboardheader.html' %}
+<div class="container">
+<br><br>
+<div class="jumbotron">
+<h3 class="inline">Job Activity</h3>
+<br>
+<div class="row">
+<div class="col-sm-6">
+<canvas id="myChart" width="400" height="400"></canvas>
+</div>
+<div class="col-sm-6">
+<canvas id="myChart2" width="400" height="400"></canvas>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

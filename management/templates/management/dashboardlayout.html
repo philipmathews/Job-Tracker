@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <script>
+    $(document).ready(function(){
+        $("#cbutton").click(function(){
+            $("#basicModal").load("{% url 'management:createwishlist' %}");
+            });
+            });
+    </script>
+    <script>
+    $(document).ready(function(){
+        $("#appliedbutton").click(function(){
+            $("#appliedModal").load("{% url 'management:createapplied' %}");
+            });
+            });
+    </script>
+    <script>
+        $(document).ready(function(){
+            $('a[data-toggle="tab"]').click(function (e) {
+                e.preventDefault();
+                $(this).tab('show');
+                });
+            $('a[data-toggle="tab"]').on("shown.bs.tab", function (e) {
+                var id = $(e.target).attr("href");
+                localStorage.setItem('selectedTab', id)
+                });
+            var selectedTab = localStorage.getItem('selectedTab');
+            if (selectedTab != null) {
+                $('a[data-toggle="tab"][href="' + selectedTab + '"]').tab('show');
+                }
+        });
+    </script>
+    <script>
+    function wishinfofunc(wishlist_id){
+        var url = "{% url 'management:wishlistinfo' 1234 %}".replace(/1234/, wishlist_id.toString());
+        $("#wishinfoModal").load(url);
+        }
+    </script>
+    <script>
+    function appliedinfofunc(applied_id){
+        var url = "{% url 'management:appliedinfo' 1234 %}".replace(/1234/, applied_id.toString());
+        $("#appliedinfoModal").load(url);
+        }
+    </script>
+    <script>
+    $(document).ready(function(){
+        $("#taskbutton").click(function(){
+            $("#taskModal").load("{% url 'management:createtask' %}");
+            });
+            });
+    </script>
+    <style>
+        .inline{
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+        {% include 'management/includes/dashboardheader.html' %}
+        {% block content %}
+        {% endblock %}
+</body>
+</html>

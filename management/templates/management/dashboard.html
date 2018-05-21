@@ -1,0 +1,66 @@
+{% extends 'management/dashboardlayout.html' %}
+{% block content %}
+<div class="container">
+    <br><br>
+    <button type="button" id="cbutton" class="btn btn-primary" data-toggle="modal" data-target="#basicModal" >ADD WISHLIST</button>
+    <div class="modal" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModalTitle" aria-hidden="true">
+    </div>
+    &nbsp;&nbsp;&nbsp;
+    <button type="button" id="appliedbutton" class="btn btn-primary" data-toggle="modal" data-target="#appliedModal" >ADD APPLIED</button>
+    <div class="modal" id="appliedModal" tabindex="-1" role="dialog" aria-labelledby="appliedModalTitle" aria-hidden="true">
+    </div>
+    <br><br>
+<div class="jumbotron">
+
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" id="wishlist-tab" data-toggle="tab" href="#wishlist" role="tab" aria-controls="wishlist" aria-selected="true">WishList</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Applied</a>
+  </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade show active" id="wishlist" role="tabpanel" aria-labelledby="wishlist-tab">
+      <br>
+        <div class="row">
+                {% for wishlist in wishlists %}
+                <div class="col-sm-4">
+                  <div class="card mt-3">
+                    <div class="card-body">
+                      <h5 class="card-title">{{ wishlist.company }}</h5>
+                      <p class="card-text">{{ wishlist.job_title }}</p>
+                      <button onclick="wishinfofunc('{{wishlist.id}}')" type="button" id="wishinfobutton" class="btn btn-primary" data-toggle="modal" data-target="#wishinfoModal" >JOB INFO</button>
+                      <div class="modal" id="wishinfoModal" tabindex="-1" role="dialog" aria-labelledby="wishinfoModalTitle" aria-hidden="true">
+                      </div>
+                      <a href="{% url 'management:deletewishlist' wishlist.id %}" class="btn btn-secondary float-right" onclick="return confirm('Are you sure you want to Delete?');">DELETE</a>
+                    </div>
+                  </div>
+                </div>
+            {% endfor %}
+            </div>                        
+  </div>
+  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+      <br>
+        <div class="row">
+                {% for appliedlist in appliedlists %}
+                <div class="col-sm-4">
+                  <div class="card mt-3">
+                    <div class="card-body">
+                      <h5 class="card-title">{{ appliedlist.company }}</h5>
+                      <p class="card-text">{{ appliedlist.job_title }}</p>
+                      <p class="card-text">Applied On: {{ appliedlist.applied }}</p>
+                      <button onclick="appliedinfofunc('{{appliedlist.id}}')" type="button" id="appliedinfobutton" class="btn btn-primary" data-toggle="modal" data-target="#appliedinfoModal" >JOB INFO</button>
+                      <div class="modal" id="appliedinfoModal" tabindex="-1" role="dialog" aria-labelledby="appliedinfoModalTitle" aria-hidden="true">
+                      </div>
+                      <a href="{% url 'management:deleteapplied' appliedlist.id %}" class="btn btn-secondary float-right" onclick="return confirm('Are you sure you want to Delete?');">DELETE</a>
+                    </div>
+                  </div>
+                </div>
+            {% endfor %}
+            </div>                        
+  </div>
+</div>
+      </div>
+      </div>
+{% endblock %}

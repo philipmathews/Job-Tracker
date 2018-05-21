@@ -1,0 +1,30 @@
+{% extends 'management/layout.html' %}
+{% load bootstrap4 %}
+{% bootstrap_css %}
+{% block title %}Login{% endblock %}
+{% block content %}
+<div class="container">
+<div class="jumbotron">
+<div class="container">
+{% if user == None %}
+{% bootstrap_alert "Your username and password didn't match." alert_type='error' dismissable=True %}
+{% endif %}
+  <h2>Login</h2>
+  <br>
+  <form method="POST" action ="{% url 'management:login' %}" >
+    <div class="form-group">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    <br>
+    {% buttons %}
+    <button type="submit" class="btn btn-primary">Login</button>
+    {% endbuttons %}
+<br>
+<a href= "{% url 'management:register' %}">Not yet registered?Sign Up</a>
+<br><br>
+<a href= "{% url 'management:password_reset' %}">Forgot your password?</a>
+    </div>
+  </form>
+</div></div>
+</div>
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends 'management/dashboardlayout.html' %}
+{% block content %}
+<div class="container">
+    <br><br>
+    <button type="button" id="taskbutton" class="btn btn-primary" data-toggle="modal" data-target="#taskModal" >ADD TASKS</button>
+    <div class="modal" id="taskModal" tabindex="-1" role="dialog" aria-labelledby="taskModalTitle" aria-hidden="true">
+    </div>
+    &nbsp;&nbsp;
+    <a href="{% url 'management:deletecompleted' %}" class="btn btn-secondary" onclick="return confirm('Are you sure you want to Delete?');">DELETE COMPLETED TASKS</a>
+    <br><br>
+<div class="jumbotron">
+        <div class="row">
+                {% for task in tasks %}
+                <div class="col-sm-4">
+                <div class="card text-white bg-info mb-3" style="max-width: 18rem;">
+                <div class="card-header">
+                <h5>{{task.title}}</h5>
+                </div>
+                <div class="card-body">
+                <p class="card-text">{{ task.text }}</p>
+                <p class="card-text">Added On: {{ task.date }}</p>
+                </div>
+                <div class="card-footer">
+                    {% if task.complete %}
+                    <p class="inline">COMPLETED</p>
+                    {% else %}
+                    <a href="{% url 'management:completetask' task.id %}" class="btn btn-primary inline">COMPLETE</a>
+                    {% endif %}
+                    <a href="{% url 'management:deletetask' task.id %}" class="btn btn-secondary float-right" onclick="return confirm('Are you sure you want to Delete?');">DELETE</a>
+                </div>
+            </div>
+        </div>
+{% endfor %}
+</div>
+ </div>         
+{% endblock %}              
