@@ -334,11 +334,13 @@ def chartdata(request):
     appliedlists_count = Applied.objects.filter(username=username).count()
     interviewed_acount = username.applied_set.filter(status__icontains='Interview').count()
     rejected_acount = username.applied_set.filter(status__icontains='Rejected').count()
+    offer_acount = username.applied_set.filter(status__icontains='offer').count()
     interviewed_wcount = username.wishlist_set.filter(status__icontains='Interview').count()
     rejected_wcount = username.wishlist_set.filter(status__icontains='Rejected').count()
+    offer_wcount = username.wishlist_set.filter(status__icontains='offer').count()
     interviewed_count = interviewed_acount + interviewed_wcount
     rejected_count = rejected_acount + rejected_wcount
-    print(interviewed_count)
+    offer_count = offer_acount + offer_wcount
     appliedlist = username.applied_set.all()
     ordappliedlist = appliedlist.order_by('id')
     datelist = set(ordappliedlist.values_list('applied',flat=True))
@@ -347,8 +349,8 @@ def chartdata(request):
     for date in dates:
         job_count = username.applied_set.filter(applied=date).count()
         count.append(job_count)
-    labels = ["Wishlist","Applied","Interview","Rejected"]
-    default_items = [wishlists_count,appliedlists_count,interviewed_count,rejected_count]
+    labels = ["Wishlist","Applied","Interview","Rejected","Offered"]
+    default_items = [wishlists_count,appliedlists_count,interviewed_count,rejected_count,offer_count]
     labels2 = dates
     default2 = count
     data={
