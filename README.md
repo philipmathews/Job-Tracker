@@ -9,3 +9,7 @@ Therefore using Job Tracker app one can keep track of every detail about your jo
 A Task manager or a To-Do App is also made available in this web-app.
 
 The app also provides insightful Job Analysis through charts.This will track one’s job Search Progress
+
+## Preview
+
+<img width="1277" alt="screen shot 2018-05-29 at 1 37 49 am" src="https://user-images.githubusercontent.com/36355970/40628190-2c007440-62e1-11e8-8703-43bf7b89d7de.png">
