@@ -13,3 +13,5 @@ The app also provides insightful Job Analysis through charts.This will track one
 ## Preview
 
 <img width="1277" alt="screen shot 2018-05-29 at 1 37 49 am" src="https://user-images.githubusercontent.com/36355970/40628190-2c007440-62e1-11e8-8703-43bf7b89d7de.png">
+
+<img width="1277" alt="screen shot 2018-05-29 at 1 46 47 am" src="https://user-images.githubusercontent.com/36355970/40628375-4696e14e-62e2-11e8-87c8-2617b23ce42c.png">
